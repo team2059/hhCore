@@ -2,8 +2,6 @@ package hhCore.Drive;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-import hhCore.Drive.Control;
-
 public abstract class HHDrive extends Subsystem {
 
 	private double xSensitivity = 0.0;
@@ -146,5 +144,61 @@ public abstract class HHDrive extends Subsystem {
 	 */
 	public void setzSensitivity(double zSensitivity) {
 		this.zSensitivity = zSensitivity;
+	}
+
+	/**
+	 * setxHighSpeed() sets the max high speed value of x axis.
+	 * @param xHighSpeed double from 0.0 to 1.0
+	 */
+	public void setxHighSpeed(double xHighSpeed) {
+		this.xHighSpeed = xHighSpeed;
+	}
+
+	/**
+	 * setyHighSpeed() sets the max high speed value of y axis.
+	 * @param yHighSpeed double from 0.0 to 1.0
+	 */
+	public void setyHighSpeed(double yHighSpeed) {
+		this.yHighSpeed = yHighSpeed;
+	}
+
+	/**
+	 * setzHighSpeed() sets the max high speed value of z axis.
+	 * @param zHighSpeed double from 0.0 to 1.0
+	 */
+	public void setzHighSpeed(double zHighSpeed) {
+		this.zHighSpeed = zHighSpeed;
+	}
+
+	/**
+	 * setxLowSpeed() sets the max low speed value of x axis.
+	 * @param xLowSpeed double from 0.0 to 1.0
+	 */
+	public void setxLowSpeed(double xLowSpeed) {
+		this.xLowSpeed = xLowSpeed;
+	}
+
+	/**
+	 * setyLowSpeed() sets the max low speed value of y axis.
+	 * @param yLowSpeed double from 0.0 to 1.0
+	 */
+	public void setyLowSpeed(double yLowSpeed) {
+		this.yLowSpeed = yLowSpeed;
+	}
+
+	/**
+	 * setzLowSpeed() sets the max low speed value of z axis.
+	 * @param zLowSpeed double from 0.0 to 1.0
+	 */
+	public void setzLowSpeed(double zLowSpeed) {
+		this.zLowSpeed = zLowSpeed;
+	}
+
+	/**
+	 * setDeadzone() set the deadzone area for a joystick.
+	 * @param deadzone double from 0.0 to 1.0
+	 */
+	public void setDeadzone(double deadzone) {
+		this.deadzone = deadzone;
 	}
 }
