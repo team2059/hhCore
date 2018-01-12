@@ -1,4 +1,4 @@
-package hhCore.Drive;
+package hhCore.drive;
 
 public class Control {
 	public static double sensitivity(double raw, double constant) {

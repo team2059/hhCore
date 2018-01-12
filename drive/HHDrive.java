@@ -1,4 +1,4 @@
-package hhCore.Drive;
+package hhCore.drive;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -16,7 +16,6 @@ public abstract class HHDrive extends Subsystem {
 	private double deadzone = 0.0;
 	private double x, y, z;
 
-	protected abstract void initDefaultCommand();
 	public abstract void driveBase(double x, double y);
 
 	/**
