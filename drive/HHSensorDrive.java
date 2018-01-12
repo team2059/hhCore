@@ -13,18 +13,39 @@ public abstract class HHSensorDrive extends HHDrive {
 	public abstract double getRightEncoder();
 	public abstract double getGyro();
 
+	/**
+	 * resetLeftEncoder() resets left encoder to zero count.
+	 */
 	public void resetLeftEncoder() {
 		leftEncoder().reset();
 	}
 
+	/**
+	 * resetRightEncoder() resets right encoder to zero count.
+	 */
 	public void resetRightEncoder() {
 		rightEncoder().reset();
 	}
 
+	/**
+	 * resetGyro() resets gyro to zero value.
+	 */
 	public void resetGyro() {
 		gyro().reset();
 	}
 
+	/**
+	 * setCorrection() setter for correction value of driving.
+	 * @param correction speed to correct the robot
+	 */
+	public void setCorrection(double correction) {
+		this.correction = correction;
+	}
+
+	/**
+	 * driveForward() make the robot drive in a straight line with encoders.
+	 * @param speed robot drive speed
+	 */
 	public void driveForward(double speed) {
 		if (getRightEncoder() - getLeftEncoder() > 1) {
 			drive(correction, speed);
