@@ -34,8 +34,8 @@ public abstract class HHDrive extends Subsystem {
 	 * @param y	y axis speed
 	 */
 	private void deadzoneDrive(double x, double y) {
-		this.x = (Math.abs(x) < deadzone) ? x : 0.0;
-		this.y = (Math.abs(y) < deadzone) ? y : 0.0;
+		this.x = (Math.abs(x) > deadzone) ? x : 0.0;
+		this.y = (Math.abs(y) > deadzone) ? y : 0.0;
 		driveBase(this.x, this.y);
 	}
 
@@ -46,9 +46,9 @@ public abstract class HHDrive extends Subsystem {
 	 * @param z z axis speed
 	 */
 	private void deadzoneDrive(double x, double y, double z) {
-		this.x = (Math.abs(x) < deadzone) ? x : 0.0;
-		this.y = (Math.abs(y) < deadzone) ? y : 0.0;
-		this.z = (Math.abs(z) < deadzone) ? z : 0.0;
+		this.x = (Math.abs(x) > deadzone) ? x : 0.0;
+		this.y = (Math.abs(y) > deadzone) ? y : 0.0;
+		this.z = (Math.abs(z) > deadzone) ? z : 0.0;
 		driveBase(this.x, this.y, this.z);
 	}
 
