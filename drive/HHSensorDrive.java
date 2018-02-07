@@ -2,11 +2,13 @@ package hhCore.drive;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.GyroBase;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-public abstract class HHSensorDrive extends HHDrive {
+public abstract class HHSensorDrive<T extends GyroBase> extends HHDrive {
 	private double correction = 0.1;
 
-	public abstract ADXRS450_Gyro gyro();
+	public abstract T gyro();
 	public abstract Encoder leftEncoder();
 	public abstract Encoder rightEncoder();
 	public abstract double getLeftEncoder();
