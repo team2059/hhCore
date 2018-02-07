@@ -1,7 +1,7 @@
 package hhCore.commands.drive;
 
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import hhCore.drive.HHSensorDrive;
+import hhCore.subsystems.drive.HHSensorDrive;
 
 public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand {
 
