@@ -6,6 +6,7 @@ import hhCore.drive.HHSensorDrive;
 public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCommand {
 
 	public abstract T getDriveBase();
+	private double maxSpeed = 1.0;
 
 	/**
 	 * Instantiates a {@link PIDCommand} that will use the given p, i and d values.
@@ -69,6 +70,10 @@ public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCom
 		setSetpoint(inches);
 	}
 
+	public void setMaxSpeed(double maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
 	protected void initialize() {
 		getDriveBase().resetLeftEncoder();
 		getDriveBase().resetRightEncoder();
@@ -81,7 +86,7 @@ public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCom
 
 	@Override
 	protected void usePIDOutput(double speed) {
-		getDriveBase().driveForward(speed);
+		getDriveBase().driveForward(speed * maxSpeed);
 	}
 
 	@Override

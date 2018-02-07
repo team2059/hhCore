@@ -6,6 +6,7 @@ import hhCore.drive.HHSensorDrive;
 public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand {
 
 	public abstract T getDriveBase();
+	private double maxSpeed = 1.0;
 
 	/**
 	 * Instantiates a {@link PIDCommand} that will use the given p, i and d values.
@@ -69,6 +70,10 @@ public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand
 		setSetpoint(angle);
 	}
 
+	public void setMaxSpeed(double maxSpeed) {
+		this.maxSpeed = maxSpeed;
+	}
+
 	@Override
 	protected double returnPIDInput() {
 		return getDriveBase().getGyro();
@@ -76,7 +81,7 @@ public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand
 
 	@Override
 	protected void usePIDOutput(double speed) {
-		getDriveBase().drive(speed, 0);
+		getDriveBase().drive(speed * maxSpeed, 0);
 	}
 
 	@Override
