@@ -15,6 +15,7 @@ public abstract class HHDrive extends Subsystem {
 	private double zLowSpeed = 0.5;
 	private double deadzone = 0.0;
 	private double x, y, z;
+	private static boolean isPID = false;
 
 	public abstract void driveBase(double x, double y);
 
@@ -24,8 +25,21 @@ public abstract class HHDrive extends Subsystem {
 	 * @param y y axis of joystick
 	 * @param z z axis of joystick
 	 */
+	public void setIsPID(boolean b) {
+		isPID = b;
+	}
+	
+	public void pidDrive(double x, double y) {
+		if (isPID == true) {
+			driveBase(x, y);
+			System.out.println("the x:" + x + " the y: " + y);
+		}
+	}
+	
 	public void driveBase(double x, double y, double z) {
-		driveBase(x + z, y);
+		if (isPID == false) {
+			driveBase(x + z, y);
+		}
 	}
 
 	/**

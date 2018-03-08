@@ -39,7 +39,7 @@ public abstract class HHSensorDrive<T extends GyroBase> extends HHDrive {
 	 * @param correction speed to correct the robot
 	 */
 	public void setCorrection(double correction) {
-		this.correction = correction;
+		this.correction = -correction;
 	}
 
 	/**
@@ -48,11 +48,11 @@ public abstract class HHSensorDrive<T extends GyroBase> extends HHDrive {
 	 */
 	public void driveForward(double speed) {
 		if (getRightEncoder() - getLeftEncoder() > 1) {
-			drive(correction, speed);
+			pidDrive(-correction, speed);
 		} else if (getLeftEncoder() - getRightEncoder() > 1) {
-			drive(-correction, speed);
+			pidDrive(correction, speed);
 		} else {
-			drive(0, speed);
+			pidDrive(0, speed);
 		}
 	}
 }

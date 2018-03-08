@@ -75,6 +75,7 @@ public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCom
 	}
 
 	protected void initialize() {
+		getDriveBase().setIsPID(true);
 		getDriveBase().resetLeftEncoder();
 		getDriveBase().resetRightEncoder();
 	}
@@ -91,10 +92,11 @@ public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCom
 
 	@Override
 	protected boolean isFinished() {
-		return isTimedOut() || Math.abs(getSetpoint() - getPosition()) < 0.5;
+		return Math.abs(getSetpoint() - getPosition()) < 1;
 	}
 
 	protected void end() {
+		getDriveBase().setIsPID(false);
 		setTimeout(0);
 	}
 

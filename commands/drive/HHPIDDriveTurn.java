@@ -66,12 +66,17 @@ public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand
 	}
 
 	public void setPIDStart(double angle) {
-		setTimeout(angle/30);
+		setTimeout(Math.abs(angle/30));
 		setSetpoint(angle);
 	}
 
 	public void setMaxSpeed(double maxSpeed) {
 		this.maxSpeed = maxSpeed;
+	}
+	
+	@Override
+	protected void initialize() {
+		getDriveBase().setIsPID(true);
 	}
 
 	@Override
@@ -81,12 +86,21 @@ public abstract class HHPIDDriveTurn<T extends HHSensorDrive> extends PIDCommand
 
 	@Override
 	protected void usePIDOutput(double speed) {
-		getDriveBase().drive(speed * maxSpeed, 0);
+		getDriveBase().pidDrive(speed * maxSpeed, 0);
 	}
 
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(getSetpoint()-getPosition()) < 0.5 || isTimedOut();
+		return Math.abs(getSetpoint()-getPosition()) < 2;
+	}
+	
+	protected void end() {
+		getDriveBase().setIsPID(false);
+		setTimeout(0);
+	}
+
+	protected void interrupted() {
+		end();
 	}
 
 }
