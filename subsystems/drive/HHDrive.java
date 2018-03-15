@@ -28,6 +28,10 @@ public abstract class HHDrive extends Subsystem {
 	public void setIsPID(boolean b) {
 		isPID = b;
 	}
+
+	public boolean isPID() {
+		return isPID;
+	}
 	
 	public void pidDrive(double x, double y) {
 		if (isPID == true) {
