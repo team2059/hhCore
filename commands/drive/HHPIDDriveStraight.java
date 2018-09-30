@@ -66,7 +66,7 @@ public abstract class HHPIDDriveStraight<T extends HHSensorDrive> extends PIDCom
 	}
 
 	public void setPIDStart(double inches) {
-		setTimeout(inches/12);
+		setTimeout(Math.abs(inches/12));
 		setSetpoint(inches);
 	}
 

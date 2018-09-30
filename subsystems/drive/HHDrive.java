@@ -121,6 +121,7 @@ public abstract class HHDrive extends Subsystem {
 	 * @param z z axis speed
 	 */
 	public void drive(double x, double y, double z) {
+		System.out.println("the x:" + x + " the y: " + y);
 		sensitivityDrive(x * xHighSpeed, y * yHighSpeed, z * zHighSpeed);
 	}
 
