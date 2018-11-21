@@ -1,0 +1,19 @@
+plugins {
+    id "java"
+    id "eclipse"
+    id "idea"
+    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
+}
+
+dependencies {
+    implementation wpilib()
+    implementation ctre()
+}
+
+repositories {
+    jcenter() 
+}
+
+wrapper {
+    gradleVersion = "4.9"
+}
