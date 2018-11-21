@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
-    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
+    id "edu.wpi.first.GradleRIO"
 }
 
 dependencies {
@@ -14,6 +14,6 @@ repositories {
     jcenter() 
 }
 
-wrapper {
+task wrapper(type: Wrapper) {
     gradleVersion = "4.9"
 }
