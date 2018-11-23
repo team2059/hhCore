@@ -2,16 +2,16 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
-    id "edu.wpi.first.GradleRIO"
+    id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
     implementation wpilib()
     implementation ctre()
-}
-
-repositories {
-    jcenter() 
 }
 
 task wrapper(type: Wrapper) {
