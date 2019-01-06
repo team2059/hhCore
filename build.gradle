@@ -1,19 +1,18 @@
 plugins {
     id "java"
-    id "eclipse"
-    id "idea"
     id "edu.wpi.first.GradleRIO"
 }
+
+def includeDesktopSupport = false
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation wpilib()
-    implementation ctre()
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = "4.9"
+    compile wpi.deps.wpilib()
+    compile wpi.deps.vendor.java()
+    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
+    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+    testCompile 'junit:junit:4.12'
 }
