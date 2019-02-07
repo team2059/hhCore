@@ -118,7 +118,7 @@ public abstract class HHSensorDrive<T extends GyroBase> extends HHDrive {
 		lastLeftEncoder = getLeftEncoder();
 		lastRightEncoder = getRightEncoder();
 		lastLeftVelocity = lVelocity;
-		lastRightEncoder = rVelocity;
+		lastRightVelocity = rVelocity;
 		lastLeftAcceleration = lAcceleration;
 		lastRightAcceleration = rAcceleration;
 	}
