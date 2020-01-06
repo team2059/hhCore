@@ -1,12 +1,24 @@
 plugins {
-    id 'java'
+    id "java"
+    id "maven"
     id "maven-publish"
     id "edu.wpi.first.GradleRIO" version "2020.1.2"
+}
+
+group = "com.github.team2059"
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+  classifier = 'sources'
+  from sourceSets.main.allSource
 }
 
 repositories {
     jcenter()
     maven { url "https://jitpack.io"  }
+}
+
+artifacts {
+    archives sourcesJar
 }
 
 dependencies {
