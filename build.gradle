@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id "edu.wpi.first.GradleRIO" version "2020.1.2"
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // FRC Specific
+    implementation wpi.deps.wpilib()
+    nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
+    nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
+
+    implementation wpi.deps.vendor.java()
+    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
+    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+
+    testImplementation 'junit:junit:4.12'
+}
+
+wrapper {
+    gradleVersion = '6.0.1'
+    distributionType = Wrapper.DistributionType.ALL
+}

@@ -1,8 +1,8 @@
 package hhCore.subsystems.drive;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public abstract class HHDrive extends Subsystem {
+public abstract class HHDrive extends SubsystemBase {
 
 	private double xSensitivity = 0.0;
 	private double ySensitivity = 0.0;
@@ -32,14 +32,14 @@ public abstract class HHDrive extends Subsystem {
 	public boolean isPID() {
 		return isPID;
 	}
-	
+
 	public void pidDrive(double x, double y) {
 		if (isPID == true) {
 			driveBase(x, y);
 			System.out.println("the x:" + x + " the y: " + y);
 		}
 	}
-	
+
 	public void driveBase(double x, double y, double z) {
 		if (isPID == false) {
 			driveBase(x + z, y);
