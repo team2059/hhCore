@@ -1,4 +1,4 @@
-package hhCore.sensors;
+package hhCore.subsystems.elevator;
 
 import edu.wpi.first.wpilibj.DigitalSource;
 import edu.wpi.first.wpilibj.Encoder;
@@ -25,17 +25,17 @@ public class ElevatorEncoder extends Encoder {
 	 * @param channelA The a channel digital input channel.
 	 * @param channelB The b channel digital input channel.
 	 */
-	
+
 	double offset = 0.0;
-	
+
 	public double getPosition() {
 		return this.getPosition() - offset;
 	}
-	
+
 	public void setPosition(double d) {
 		offset = this.getPosition() - d;
 	}
-	
+
 	public ElevatorEncoder(int channelA, int channelB) {
 		super(channelA, channelB);
 	}
