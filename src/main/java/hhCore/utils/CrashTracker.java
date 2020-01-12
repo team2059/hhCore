@@ -12,8 +12,6 @@ import java.util.UUID;
  */
 public class CrashTracker {
 
-    private static final UUID RUN_INSTANCE_UUID = UUID.randomUUID();
-
     public static void logRobotStartup() {
         logMarker("robot startup");
     }
@@ -48,8 +46,6 @@ public class CrashTracker {
 
     private static void logMarker(String state, Throwable nullableException) {
         try (PrintWriter writer = new PrintWriter(new FileWriter("/home/lvuser/crash_tracking.txt", true))) {
-            writer.print(RUN_INSTANCE_UUID.toString());
-            writer.print(", ");
             writer.print(state);
             writer.print(", ");
             writer.print(new Date().toString());
