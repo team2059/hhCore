@@ -9,10 +9,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  */
 public class HHSparkMax extends CANSparkMax {
 
-    private int smartCurrentLimitValue = 40;
-
-    private boolean inverted = false;
-
     /**
      * Sets up the CAN Spark Max with the default settings on the device number 
      * provided and sets the default motor type to brushless.
@@ -22,8 +18,8 @@ public class HHSparkMax extends CANSparkMax {
         super(deviceNumber, MotorType.kBrushless);
 
         resetConfig();
-        this.setSmartCurrentLimit(smartCurrentLimitValue);
-        this.setInverted(inverted);
+        this.setSmartCurrentLimit(40);
+        this.setInverted(false);
     }
 
     /**
@@ -45,7 +41,7 @@ public class HHSparkMax extends CANSparkMax {
      * @param smartCurrentLimitValue smart current limit. Default: 40
      */
     public void setSmartCurrentLimitValue(int smartCurrentLimitValue) {
-        this.smartCurrentLimitValue = smartCurrentLimitValue;
+        this.setSmartCurrentLimit(smartCurrentLimitValue);
     }
 
        /**
@@ -53,6 +49,6 @@ public class HHSparkMax extends CANSparkMax {
      * @param inverted inverted state. Default: true
      */
     public void setInverted(boolean inverted) {
-        this.inverted = inverted;
+        this.setInverted(inverted);
     }
 }
