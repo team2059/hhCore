@@ -101,6 +101,7 @@ public class HHTalonSRX extends WPI_TalonSRX {
     public void setPIDLoopIndex(int PIDLoopIndex) {
         this.PIDLoopIndex = PIDLoopIndex;
     }
+    
 
     /**
      * Set the motor loop index.
