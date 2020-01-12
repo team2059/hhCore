@@ -15,11 +15,8 @@ import java.util.Optional;
 public class HHSensorTalonSRX extends HHTalonSRX {
 
     private int feedbackTimeout = 30;
-    private int PIDLoopIndex = 0;
     private int motorLoopIndex = 0;
     private int motorSlotIndex = 0;
-    private int sensorPosition = 0;
-
     private int maxSensorCruiseVelocity;
     private int maxSensorAcceleration;
 
@@ -27,7 +24,15 @@ public class HHSensorTalonSRX extends HHTalonSRX {
 
     /**
      * Sets up the Talon SRX with the default settings on the device number provided.
-     * @param deviceNumber device number of the Talon SRX
+     * @param deviceNumber device number of Talon SRX
+     * @param device feedback device
+     * @param sensorPhase sensor phase
+     * @param kP kP value
+     * @param kI kI value
+     * @param kD kD value
+     * @param kF kF value
+     * @param maxVelocity max sensor velocity
+     * @param maxAcceleration max sensor acceleration
      */
     public HHSensorTalonSRX(int deviceNumber, FeedbackDevice device, Boolean sensorPhase,
                             double kP, double kI, double kD, double kF, int maxVelocity, int maxAcceleration) {
@@ -36,7 +41,7 @@ public class HHSensorTalonSRX extends HHTalonSRX {
         // Clean out the default CTRE settings
         resetConfig();
 
-        //config Feedback Device
+        // Configure Feedback Device
         configSelectedFeedbackSensor(device);
 
         // Set the Sensor Phase
@@ -49,10 +54,10 @@ public class HHSensorTalonSRX extends HHTalonSRX {
         this.configPeakOutputReverse(-1, feedbackTimeout);
 
         // Set Motion Magic gains in slot0 and FPID values
-        this.selectProfileSlot(motorSlotIndex, motorLoopIndex);
+        this.selectProfileSlot(0, 0);
         this.gains = new Gains(kP, kI, kD, kF);
 
-        this.setSelectedSensorPosition(sensorPosition, PIDLoopIndex, feedbackTimeout);
+        this.setSelectedSensorPosition(0, 0, feedbackTimeout);
 
         // Set acceleration and cruise velocity
         setSensorCruiseVelocity(maxVelocity);
@@ -102,40 +107,8 @@ public class HHSensorTalonSRX extends HHTalonSRX {
     }
 
     /**
-     * Sets the PID loop index.
-     * @param PIDLoopIndex PID loop index. Default: 0
-     */
-    public void setPIDLoopIndex(int PIDLoopIndex) {
-        this.PIDLoopIndex = PIDLoopIndex;
-    }
-
-    /**
-     * Set the motor loop index.
-     * @param motorLoopIndex motor loop index. Default: 0
-     */
-    public void setMotorLoopIndex(int motorLoopIndex) {
-        this.motorLoopIndex = motorLoopIndex;
-    }
-
-    /**
-     * Set the motor slot index.
-     * @param motorSlotIndex motor slot index. Default: 0
-     */
-    public void setMotorSlotIndex(int motorSlotIndex) {
-        this.motorSlotIndex = motorSlotIndex;
-    }
-
-    /**
-     * Set the sensor position.
-     * @param sensorPosition sensor position. Default: 0
-     */
-    public void setSensorPosition(int sensorPosition) {
-        this.sensorPosition = sensorPosition;
-    }
-
-    /**
-     * Set the sensor cruise velocity.
-     * @param sensorCruiseVelocity cruise velocity in raw sensor units per 100 ms. Default: 35000
+     * Sets the sensor cruise velocity.
+     * @param sensorCruiseVelocity cruise velocity in raw sensor units per 100 ms.
      */
     public void setSensorCruiseVelocity(int sensorCruiseVelocity) {
         this.maxSensorCruiseVelocity = sensorCruiseVelocity;
@@ -143,8 +116,8 @@ public class HHSensorTalonSRX extends HHTalonSRX {
     }
 
     /**
-     * Set the sensor acceleration.
-     * @param sensorAcceleration sensor acceleration in raw sensor units per 100 ms per second. Default: 100000
+     * Sets the sensor acceleration.
+     * @param sensorAcceleration sensor acceleration in raw sensor units per 100 ms per second.
      */
     public void setSensorAcceleration(int sensorAcceleration) {
         this.maxSensorAcceleration = sensorAcceleration;
@@ -152,7 +125,7 @@ public class HHSensorTalonSRX extends HHTalonSRX {
     }
 
     /**
-     * get the gains object for the motor controller
+     * Gets the gains object for the motor controller
      * @return Gains object
      */
     public Gains getGains() {

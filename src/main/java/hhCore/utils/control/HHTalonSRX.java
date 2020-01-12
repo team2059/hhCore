@@ -3,9 +3,14 @@ package hhCore.utils.control;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+/**
+ * Wrapper around WPI_TalonSRX that includes a default motor configuration and makes
+ * it easier to change the configuration of the motor. This is just a base configuration
+ * for a CAN Talon SRX.
+ */
 public class HHTalonSRX extends WPI_TalonSRX {
 
-    private ControlMode mControlMode;
+    private ControlMode controlMode;
     private double feedForwardValue;
 
     private int feedbackTimeout = 30; // ms
@@ -13,7 +18,7 @@ public class HHTalonSRX extends WPI_TalonSRX {
     private boolean inverted = false;
 
     /**
-     * Base constructor
+     * Sets up the Talon SRX with the default settings on the device number provided.
      * @param deviceNumber CAN ID of controller
      */
     public HHTalonSRX(int deviceNumber) {
@@ -21,13 +26,14 @@ public class HHTalonSRX extends WPI_TalonSRX {
     }
 
     /**
-     * Constructor for motor controller
+     * Sets up the Talon SRX with the default settings on the device number provided
+     * and sets the control mode.
      * @param deviceNumber device ID of motor controller
-     * @param mControlMode
+     * @param controlMode set the motor controller control mode
      */
-    public HHTalonSRX(int deviceNumber, ControlMode mControlMode) {
+    public HHTalonSRX(int deviceNumber, ControlMode controlMode) {
         super(deviceNumber);
-        this.mControlMode = mControlMode;
+        this.controlMode = controlMode;
         this.configFactoryDefault();
     }
 
@@ -37,10 +43,11 @@ public class HHTalonSRX extends WPI_TalonSRX {
      */
     public void setInverted(boolean invert) {
         this.inverted = invert;
+        this.setInverted(invert);
     }
 
     /**
-     * returns invert status of the motor
+     * Returns invert status of the motor
      * @return inverted
      */
     public boolean getInverted() {
@@ -48,7 +55,7 @@ public class HHTalonSRX extends WPI_TalonSRX {
     }
 
     /**
-     * returns the Feedback Timeout Value
+     * Returns the Feedback Timeout Value
      * @return feedBack timeout
      */
     public int getFeedbackTimeout() {
@@ -56,7 +63,7 @@ public class HHTalonSRX extends WPI_TalonSRX {
     }
 
     /**
-     * set the Feedback Timeout value, defaults to 30
+     * Sets the Feedback Timeout value, defaults to 30
      * @param feedbackTimeout timeout in ms
      */
     public void setFeedbackTimeout(int feedbackTimeout) {
