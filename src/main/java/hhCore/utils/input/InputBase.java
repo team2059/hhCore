@@ -1,5 +1,6 @@
 package hhCore.utils.input;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public abstract class InputBase {
@@ -11,13 +12,17 @@ public abstract class InputBase {
     }
 
     public HHJoystick getJoystick(String name) {
+        HHJoystick joystick = null;
+
         for(int i = 0; i < getJoysticks().length; i++) {
-            if(getJoystick(i).getJoystickName().equals(name)) {
-                return getJoystick(i);
+            if (getJoystick(i).getJoystickName().equals(name)) {
+                joystick = getJoystick(i);
+            } else {
+                throw new IllegalArgumentException(String.format("No Joystick %name", name));
             }
         }
 
-        return null;
+        return joystick;
     }
 
     public JoystickButton getJoystickButton(int joystick, int button) {
@@ -25,6 +30,14 @@ public abstract class InputBase {
     }
 
     public JoystickButton getJoystickButton(String name, int button) {
-        return getJoystick(name).getJoystickButton(button);
+        JoystickButton joystickButton = null;
+        
+        try {
+            joystickButton = getJoystick(name).getJoystickButton(button);
+        } catch (IllegalArgumentException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return joystickButton;
     }
 }

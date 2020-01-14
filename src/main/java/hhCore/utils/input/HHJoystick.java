@@ -15,7 +15,7 @@ public class HHJoystick extends Joystick {
         this.joystickName = name;
 
         for(int i = 0; i < buttonCount; i++) {
-            joystickButtons[i] = new JoystickButton(this, i);
+            joystickButtons[i] = new JoystickButton(this, i + 1);
         }
     }
 
@@ -32,10 +32,22 @@ public class HHJoystick extends Joystick {
     }
 
     public JoystickButton getJoystickButton(int button) {
-        return joystickButtons[button];
+        return joystickButtons[button - 1];
     }
 
     public String getJoystickName() {
         return joystickName;
+    }
+
+    public double getRawX() {
+        return this.getRawAxis(0);
+    }
+
+    public double getRawY() {
+        return this.getRawAxis(1);
+    }
+
+    public double getRawZ() {
+        return this.getRawAxis(2);
     }
 }
