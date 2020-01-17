@@ -5,7 +5,7 @@ import hhCore.utils.input.controllers.ButtonBox;
 import hhCore.utils.input.controllers.Extreme3DPro;
 import hhCore.utils.input.InputBase;
 
-public class TestInputBase extends InputBase{
+public class TestInputBase extends InputBase {
 
     @Override
     public AbstractInput[] getJoysticks() {
@@ -16,6 +16,7 @@ public class TestInputBase extends InputBase{
     }
 
     public TestInputBase() {
+        getJoystick(0).getRawButton(0);
 //        getJoystickButton(0, 1).
 //        getJoystick(0).joystickButtons[0].whenPressed()
     }

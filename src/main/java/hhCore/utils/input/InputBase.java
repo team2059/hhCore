@@ -6,13 +6,11 @@ public abstract class InputBase {
 
     public abstract AbstractInput[] getJoysticks();
 
-    public AbstractInput[] joysticks = getJoysticks();
-
     public AbstractInput getJoystick(int joystick) {
-        return joysticks[joystick];
+        return getJoysticks()[joystick];
     }
 
     public JoystickButton getJoystickButton(int joystick, int button) {
-        return joysticks[joystick].joystickButtons[button - 1];
+        return getJoysticks()[joystick].getJoystickButtons()[button - 1];
     }
 }

@@ -13,8 +13,4 @@ public class ButtonBox extends AbstractInput {
     public JoystickButton[] getJoystickButtons() {
         return null;
     }
-
-    public boolean getButton(int button) {
-        return this.getRawButton(button);
-    }
 }

@@ -11,5 +11,7 @@ public abstract class AbstractInput extends Joystick {
         super(port);
     }
 
-    public JoystickButton[] joystickButtons = getJoystickButtons();
+    public boolean getRawButton(int button) {
+        return this.getRawButton(button);
+    }
 }
