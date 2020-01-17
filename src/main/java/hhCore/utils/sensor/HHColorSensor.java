@@ -17,4 +17,12 @@ public class HHColorSensor extends ColorSensorV3 {
     public HHColorSensor() {
         super(I2C.Port.kOnboard);
     }
+
+    /**
+     * Gets the current RGB value of the color sensor.
+     * @return string of RGB
+     */
+    public String getRBG() {
+        return String.format("%r,%g,%b", this.getRed(), this.getGreen(), this.getBlue());
+    }
 }

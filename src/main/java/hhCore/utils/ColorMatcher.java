@@ -60,4 +60,12 @@ public class ColorMatcher {
     public double getConfidenceThreshold() {
         return confidenceThreshold;
     }
+
+    /**
+     * Gets the color sensor used by color matcher
+     * @return the current color sensor
+     */
+    public HHColorSensor getColorSensor() {
+        return colorSensor;
+    }
 }
