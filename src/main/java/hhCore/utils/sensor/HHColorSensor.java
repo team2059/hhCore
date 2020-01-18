@@ -23,6 +23,6 @@ public class HHColorSensor extends ColorSensorV3 {
      * @return string of RGB
      */
     public String getRBG() {
-        return String.format("%r,%g,%b", this.getRed(), this.getGreen(), this.getBlue());
+        return String.format("%d,%d,%d", this.getRed(), this.getGreen(), this.getBlue());
     }
 }
