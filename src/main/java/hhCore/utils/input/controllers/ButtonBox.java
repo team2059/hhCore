@@ -5,12 +5,12 @@ import hhCore.utils.input.AbstractInput;
 
 public class ButtonBox extends AbstractInput {
 
-    public ButtonBox(int port) {
-        super(port);
-    }
+  public ButtonBox(int port) {
+    super(port);
+  }
 
-    @Override
-    public JoystickButton[] getJoystickButtons() {
-        return null;
-    }
+  @Override
+  public JoystickButton[] getJoystickButtons() {
+    return null;
+  }
 }

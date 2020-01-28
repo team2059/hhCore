@@ -3,6 +3,7 @@ plugins {
     id "maven"
     id "maven-publish"
     id "edu.wpi.first.GradleRIO" version "2020.1.2"
+    id "com.diffplug.gradle.spotless" version "3.27.1"
 }
 
 group = "com.github.team2059"
@@ -21,8 +22,15 @@ artifacts {
     archives sourcesJar
 }
 
+spotless {
+  java {
+    importOrder 'java', 'javax', 'org', 'com', 'edu'
+    googleJavaFormat()
+    removeUnusedImports()
+  }
+}
+
 dependencies {
-    // FRC Specific
     implementation wpi.deps.wpilib()
     nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
     nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
