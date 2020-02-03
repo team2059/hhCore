@@ -1,8 +1,21 @@
 # hhCore
 
-## Install
+[![](https://jitpack.io/v/team2059/hhcore.svg)](https://jitpack.io/#team2059/hhcore)
+
+## Usage
+
+Grab the jitpack repository in your gradle project.
 
 ```
-git submodule init
-git submodule update
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+```
+
+Add hhCore as a dependency in your gradle project.
+
+```
+dependencies {
+    implementation 'com.github.team2059:hhcore:TAG'
+}
 ```
